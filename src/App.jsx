@@ -4,6 +4,7 @@ import { Routes, Route } from 'react-router-dom'
 import Login from './auth/Login'
 import Signup from './auth/Signup'
 import Dashboard from './Dashboard'
+import { ToastContainer } from 'react-toastify'
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
         <Route path="/signup"  element={<Signup/>} />
         <Route path="/dashboard"  element={<Dashboard/>} />
       </Routes>
+      <ToastContainer />
     </div>
   )
 }
