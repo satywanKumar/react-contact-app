@@ -47,10 +47,10 @@ const Signup = () => {
         setLoading(false)
         toast.error('Account Creation Failed !', {
       position: 'top-right',
-      style:{
-        backgroundColor:'yellow',
-        borderColor:'black'
-      }
+      // style:{
+      //   backgroundColor:'yellow',
+      //   borderColor:'black'
+      // }
     });
         console.log(err)
     }
@@ -68,7 +68,7 @@ const Signup = () => {
             <input value={fullName} onChange={(e)=>{setFullName(e.target.value)}} type="text" placeholder='Full Name' />
             <input value={email} onChange={(e)=>{setEmail(e.target.value)}} type="text" placeholder='Email' />
             <input value={phone} onChange={(e)=>{setPhone(e.target.value)}} type="text" placeholder='Phone' />
-            <input value={password} onChange={(e)=>{setPassword(e.target.value)}} type="text" placeholder='Password' />
+            <input value={password} onChange={(e)=>{setPassword(e.target.value)}} type="password" placeholder='Password' />
             {/* <input value={confirmPassword} onChange={(e)=>{setConfirmPassword(e.target.value)}} type="text" placeholder='Confirm Password' /> */}
             <button className='submit-btn' type='submit'>{isLoading && <span><i className="fa-solid fa-spinner fa-spin-pulse"></i></span>} {isLoading ? 'Creating Account' : 'Create Account'}</button>
             {/* <button onClick={show}>click</button> */}
