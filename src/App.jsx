@@ -8,6 +8,7 @@ import { ToastContainer } from 'react-toastify'
 import Home from './Home'
 import ContactList from './contact/ContactList'
 import AddContact from './contact/AddContact'
+import ContactDetail from './contact/ContactDetail'
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
           <Route path="home" element={<Home />} />
           <Route path="contact" element={<ContactList />} />
           <Route path='add-contact' element={<AddContact />} />
+          <Route path='contact-detail/:id' element={<ContactDetail />} />
         </Route>
       </Routes>
       <ToastContainer />

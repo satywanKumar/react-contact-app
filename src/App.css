@@ -92,6 +92,7 @@
   background-color: #f7f4f4;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
+  overflow-y:auto;
 }
 
 .sidenav-header
@@ -148,7 +149,7 @@
   border: none;
   outline: none;
   /* margin-left: 10px; */
-  background-color:#4d1157;
+  background-color:teal;
   color: white;
   border-radius: 5px;
   padding: 10px;
@@ -167,7 +168,94 @@
 }
 
 
+.contact-form
+{
+  width: 60%;
+  min-height: 50vh;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.contact-form input
+{
+  width: 90%;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  border-bottom: 1px solid #eee;
+  padding: 10px;
+}
+
+select
+{
+  width: 90%;
+  border: none;
+  border-bottom:1px solid #eee;
+}
 
 
+option
+{
+  color: black;
+  background-color: #eee;
+}
 
+select:focus
+{
+  border: none;
+  outline: none;
+}
 
+input:focus
+{
+  border-bottom: 1px solid #f2c2fb;
+}
+
+.contact-wrapper
+{
+  display: flex;
+  flex-direction: row;
+  gap:10px;
+  padding: 10px;
+  flex-wrap:wrap;
+  justify-content:flex-start;
+
+  
+}
+
+.contact-card
+{
+  width: 130px;
+  height:130px;
+  box-shadow: 5px 5px 10px #f7c8ff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #eee;
+  border-radius: 10px;
+}
+
+.contact-card img
+{
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+}
+
+.fullName
+{
+  font-size: 16px;
+  color: #4d1157;
+  font-weight: bold;
+}
+
+.phone
+{
+  font-size: 10px;
+  color: #333;
+}
