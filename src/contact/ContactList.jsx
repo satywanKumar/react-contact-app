@@ -26,6 +26,7 @@ const ContactList = () => {
     catch(err)
     {
       console.log(err)
+      
     }
   }
 
