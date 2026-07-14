@@ -23,6 +23,7 @@ const App = () => {
           <Route path="contact" element={<ContactList />} />
           <Route path='add-contact' element={<AddContact />} />
           <Route path='contact-detail/:id' element={<ContactDetail />} />
+          <Route path='edit' element={<AddContact/>}/>
         </Route>
       </Routes>
       <ToastContainer />

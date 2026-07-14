@@ -223,8 +223,7 @@ input:focus
   padding: 10px;
   flex-wrap:wrap;
   justify-content:flex-start;
-
-  
+  height: 100%;
 }
 
 .contact-card
@@ -290,7 +289,11 @@ input:focus
 
 .contact-detail-box img
 {
-  width: 30%;
+  height: 300px;
+  width: 300px;
+  border-radius: 5px;
+  box-shadow: 5px 5px 15px #333;
+
 }
 
 .contact-detail-card
@@ -303,4 +306,32 @@ input:focus
   border-bottom: 2px dashed #333;
   padding-bottom: 10px;
   text-transform: capitalize;
+  color: #4d1157;
+}
+
+.edit-btn
+{
+  background-color: #6b027d;
+  color: white;
+  cursor: pointer;
+}
+
+.delete-btn
+{
+  background-color: rgb(235, 52, 52);
+  color: white;
+  cursor: pointer;
+}
+
+.btn
+{
+   border: none;
+   outline: none;
+   padding: 10px;
+   border-radius: 5px;
+}
+.btn:hover
+{
+  box-shadow: 5px 5px 5px #4d1157;
+  transition: 0.2s;
 }

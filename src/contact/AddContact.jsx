@@ -1,6 +1,6 @@
 import axios from 'axios'
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom';
 import swal from 'sweetalert';
 
 const AddContact = () => {
@@ -15,7 +15,23 @@ const AddContact = () => {
   const apibaseUrl = import.meta.env.VITE_API_URL
 
   const navigate = useNavigate()
+  const {state} = useLocation()
+  console.log(state)
 
+  useEffect(()=>{
+    if(state)
+    {
+      setFullName(state.fullName)
+      setEmail(state.email)
+      setPhone(state.phone)
+      setGender(state.gender)
+      setAddress(state.address)
+    }
+    else
+    {
+      reset()
+    }
+  },[state])
 
   const submitHandler = async(e)=>{
     e.preventDefault()
@@ -77,7 +93,8 @@ const AddContact = () => {
           <option value="Male">Male</option>
         </select>
         <input  onChange={(e)=>{setImage(e.target.files[0])}} type="file" />
-        <button  className='submit-btn' type='submit'>{loading && <span><i className="fa-solid fa-spinner fa-spin-pulse"></i></span>} Add Contact</button>
+        {console.log("UI")}
+        <button  className='submit-btn' type='submit'>{loading && <span><i className="fa-solid fa-spinner fa-spin-pulse"></i></span>} {state ? 'Update Contact' : 'Add Contact'}</button>
       </form>
     </div>
   )
