@@ -171,7 +171,7 @@
 .contact-form
 {
   width: 60%;
-  min-height: 50vh;
+  min-height: 60vh;
   background-color: white;
   display: flex;
   flex-direction: column;
@@ -334,4 +334,36 @@ input:focus
 {
   box-shadow: 5px 5px 5px #4d1157;
   transition: 0.2s;
+}
+
+
+.upload-image-wrapper
+{
+  height: 20vh;
+  display: flex;
+  width: 90%;
+  /* justify-content: center; */
+  align-items: center;
+}
+
+.upload-image-wrapper img
+{
+  height: 10vh;
+  cursor: pointer;
+}
+
+.upload-img-btn
+{
+  border: none;
+  outline: none;
+  background-color: #e0b8e7;
+  color: #333;
+  width: 150px;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+#fileInputBtn
+{
+  display:none;
 }

@@ -2,6 +2,7 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom';
 import swal from 'sweetalert';
+import imageHolder from '../assets/imageHolder.jpg'
 
 const AddContact = () => {
   const[fullName,setFullName] = useState('')
@@ -11,6 +12,8 @@ const AddContact = () => {
   const[gender,setGender] = useState('Female')
   const[image,setImage] = useState(null)
   const [loading,setLoading] = useState(false)
+  const [imageUrl,setImageUrl] = useState(null)
+  const [imageName,setImageName] = useState('no image selected')
 
   const apibaseUrl = import.meta.env.VITE_API_URL
 
@@ -26,6 +29,7 @@ const AddContact = () => {
       setPhone(state.phone)
       setGender(state.gender)
       setAddress(state.address)
+      setImageUrl(state.imageUrl)
     }
     else
     {
@@ -45,21 +49,44 @@ const AddContact = () => {
     formData.append('phone',phone)
     formData.append('address',address)
     formData.append('gender',gender)
-    formData.append('photo',image)
+    if(image)
+    {
+      formData.append('photo',image)
+    }
+    
 
     // console.log(formData)
 
-    const res = await axios.post(`${apibaseUrl}/contact/add-contact`,formData,{
+   if(state)
+   {
+    // update
+    console.log('update')
+    const res = await axios.put(`${apibaseUrl}/contact/update/${state._id}`,formData,{
       headers:{
         'Authorization': `Bearer ${localStorage.getItem('token')}`,
         'Content-Type':'multipart/form-data'
       }
     })
-
+    console.log(res)
+    swal("Contact Updated!", "Contact Updated ✅", "success");
+    setLoading(false)
+    reset()
+   }
+   else
+   {
+    console.log('add')
+     const res = await axios.post(`${apibaseUrl}/contact/add-contact`,formData,{
+      headers:{
+        'Authorization': `Bearer ${localStorage.getItem('token')}`,
+        'Content-Type':'multipart/form-data'
+      }
+    })
     console.log(res)
     swal("Contact Added!", "New Contact Added ✅", "success");
     setLoading(false)
     reset()
+   }
+   
     navigate('/dashboard/contact')
     }
 
@@ -79,6 +106,13 @@ const AddContact = () => {
     setGender("Female")
     document.getElementById('contactForm').reset()
     setImage(null)
+    setImageUrl(null)
+  }
+
+  const fileHandler = (e)=>{
+    setImageName(e.target.files[0].name)
+    setImage(e.target.files[0])
+    setImageUrl(URL.createObjectURL(e.target.files[0]))
   }
 
   return (
@@ -92,8 +126,12 @@ const AddContact = () => {
           <option value="Female">Female</option>
           <option value="Male">Male</option>
         </select>
-        <input  onChange={(e)=>{setImage(e.target.files[0])}} type="file" />
-        {console.log("UI")}
+        <div className='upload-image-wrapper'>
+          <img onClick={()=>{document.getElementById("fileInputBtn").click()}} src={imageUrl ? imageUrl : imageHolder} alt='image'/>
+          {!state && <span>{imageName}</span>}
+          <input id="fileInputBtn" onChange={fileHandler} type="file" />
+          {/* <button onClick={()=>{document.getElementById("fileInputBtn").click()}} type='button' className='upload-img-btn'>Select Image</button> */}
+        </div>
         <button  className='submit-btn' type='submit'>{loading && <span><i className="fa-solid fa-spinner fa-spin-pulse"></i></span>} {state ? 'Update Contact' : 'Add Contact'}</button>
       </form>
     </div>
